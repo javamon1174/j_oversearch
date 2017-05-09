@@ -26,36 +26,44 @@ class Model
     protected $transactionCounter = 0;
 
     /**
-     * @access private
+     * @access protected
      * @var String $db_connect : 데이터베이스 커넥터 저장
      */
-    private $db_connect = "";
+    protected $db_connect = "";
 
     /**
-     * @access private
+     * @access protected
      * @var Array $config : 기본 설정값 저장
      */
-    private $config = Array();
+    protected $config = Array();
 
     /**
      * 데이터베이스 커넥터 클래스 변수에 저장
      * @access public
      * @return Object $this->db_connect : 데이터베이스 커넥터 저장
      */
-    public function __construct()
-    {
-        empty($this->config) ? $this->config = (new Config())->configure() : false;
+     public function __construct()
+     {
+         empty($this->config) ? $this->config = (new Config())->configure() : false;
 
-        $this->db_connect = new \PDO(
-                                        'mysql:host='.$this->config["database"]["host"].';
-                                        port='.$this->config["database"]["port"].';
-                                        dbname='.$this->config["database"]["db"].';
-                                        charset=utf8mb4',
-                                        $this->config["database"]["user"],
-                                        $this->config["database"]["password"]
-                                    );
-        $this->db_connect->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-    }
+         $options = array(
+             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4',
+             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET GLOBAL max_allowed_packet=16777216;',
+             \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+             \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+             // PDO::ATTR_EMULATE_PREPARES   => false,
+             //Please add here mysql setting
+         );
+
+         $this->db_connect = new \PDO(
+                                         'mysql:host='.$this->config["database"]["host"].';
+                                         port='.$this->config["database"]["port"].';
+                                         dbname='.$this->config["database"]["db"].';
+                                         charset=utf8mb4',
+                                         $this->config["database"]["user"],
+                                         $this->config["database"]["password"], $options
+                                     );
+     }
 
     /**
      * 내장 기능 함수 : 문자열 쿼리 실행

@@ -1,0 +1,100 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+html, body {
+  font-family: "nanum Gothic", sans-serif;
+  background-color : #8C8C8C;
+  overflow-x: hidden;
+}
+.form-inline {
+  text-align:center;
+  color: #F0AD4E;
+}
+.contents {
+  padding-left: 5%;
+  display:table;
+}
+.item {
+  display:table-cell;
+  vertical-align: text-top;
+  text-align:center;
+  display: inline-block;
+  width: 130px;
+  /*height: 60px;*/
+  margin: 1em;
+  background-color: #8C8C8C;
+  color:#5D5D5D;
+  padding:4px;
+  border: 1px solid #8C8C8C;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -moz-border-radius: 15px
+  -webkit-border-radius: 15px
+  o-border-radius: 15px
+}
+.title {
+  font-weight: bold;
+}
+.none_a {
+  text-decoration:none;
+  color: #8c8c8c;
+}
+.none_a:hover { text-decoration:none !important; color: #EAEAEA; }
+
+footer {
+  margin-top: 2%;
+}
+.btn btn-warning {
+  background-color: #F0AD4E;
+}
+
+body{
+  margin : 5px;
+}
+#borderless td{
+  border:0px!important;
+  color: #EAEAEA;
+  background-color: #5D5D5D;
+}
+#username_tag {
+  font-size: 1.5em;
+}
+#background_form {
+  background-size: cover;
+  overflow: hidden;
+  /*background-image: url('http://i.imgur.com/IF0dVuY.png');*/
+}
+
+#gray_hr {
+  border-color :#8C8C8C;
+  background-color : #8C8C8C;
+  color: #8C8C8C;
+  border-top:5px solid #8c8c8c;
+}
+
+#item_hr {
+  border-color :#8C8C8C;
+  background-color : #8C8C8C;
+  color: #8C8C8C;
+  border-style:dotted;
+}
+#level_img
+{
+    height: 30px;
+    margin-top: -20px;
+}
+.table-responsive {
+    border:0px!important;
+}
+.none_a
+{
+    cursor: pointer;
+}
+#summary_table > thead > tr > th,
+#frequency_table > thead > tr > th,
+#summary_table > tbody > tr >td,
+#frequency_table > tbody > tr >td
+{
+    border-color :#8C8C8C;
+}
